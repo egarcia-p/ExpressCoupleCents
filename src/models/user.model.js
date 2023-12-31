@@ -44,6 +44,11 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    family: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Family',
+      required: true,
+    },
   },
   {
     timestamps: true,

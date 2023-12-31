@@ -46,6 +46,7 @@ module.exports = router;
  *               - email
  *               - password
  *               - role
+ *               - familyId
  *             properties:
  *               name:
  *                 type: string
@@ -61,11 +62,14 @@ module.exports = router;
  *               role:
  *                  type: string
  *                  enum: [user, admin]
+ *               familyId:
+ *                  type: string
  *             example:
  *               name: fake name
  *               email: fake@example.com
  *               password: password1
  *               role: user
+ *               familyId: id
  *     responses:
  *       "201":
  *         description: Created
