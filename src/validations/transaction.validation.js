@@ -5,8 +5,9 @@ const createTransaction = {
   body: Joi.object().keys({
     isExpense: Joi.boolean().required(),
     amount: Joi.number().required(),
-    establishment: Joi.string().required,
+    establishment: Joi.string().required(),
     category: Joi.string().required(),
+    note: Joi.string(),
     isEssential: Joi.boolean().required(),
     user: Joi.string().custom(objectId),
     family: Joi.string().custom(objectId),

@@ -64,9 +64,9 @@ module.exports = router;
  *                  type: string
  *               isEssential:
  *                 type: boolean
- *               userId:
+ *               user:
  *                  type: string
- *               familyId:
+ *               family:
  *                  type: string
  *               transactionDate:
  *                 type: date
@@ -77,8 +77,8 @@ module.exports = router;
  *               establishment: ENRGY
  *               category: Home Bills
  *               isEssential: true
- *               userId: userId
- *               familyId: familyId
+ *               user: userId
+ *               family: familyId
  *               transactionDate: MM/DD/YYYY
  *     responses:
  *       "201":
@@ -102,7 +102,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: familyId
+ *         name: family
  *         schema:
  *           type: string
  *         description: Family Id
@@ -136,7 +136,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Transactions'
+ *                     $ref: '#/components/schemas/Transaction'
  *                 page:
  *                   type: integer
  *                   example: 1

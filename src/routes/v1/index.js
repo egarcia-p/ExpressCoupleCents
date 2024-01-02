@@ -22,7 +22,7 @@ const defaultRoutes = [
     route: familyRoute,
   },
   {
-    path: './transactions',
+    path: '/transactions',
     route: transactionRoute,
   },
 ];
