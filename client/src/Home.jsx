@@ -10,8 +10,11 @@ export default () => (
           App to manage transactions with your couple.
         </p>
         <hr className="my-4" />
+        <Link to="/login" className="btn">
+          Login
+        </Link>
         <Link to="/profile" className="btn">
-          View Recipes
+          Profile
         </Link>
       </div>
     </div>
