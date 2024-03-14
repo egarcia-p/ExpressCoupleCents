@@ -12,6 +12,21 @@ const login = catchAsync(async (req, res) => {
   const { email, password } = req.body;
   const user = await authService.loginUserWithEmailAndPassword(email, password);
   const tokens = await tokenService.generateAuthTokens(user);
+
+  res.cookie('token', tokens.access.token, {
+    withCredentials: true,
+    httpOnly: false,
+    // secure: true, // uncomment this if you're using HTTPS
+    domain: 'localhost', // set your domain
+    path: '/',
+    expires: new Date(Date.now() + 60 * 60 * 15000), // 15 hour
+  });
+
+  res.cookie('test', '123', {
+    secure: true,
+    sameSite: 'none',
+  });
+
   res.send({ user, tokens });
 });
 

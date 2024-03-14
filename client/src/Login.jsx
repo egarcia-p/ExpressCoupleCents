@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from './services/auth.service'
+import { getUser } from './services/users.service'
 
 const Login = () => {
     const userRef = useRef()
@@ -24,9 +25,10 @@ const Login = () => {
 
         try {
             const userData = await login( user, pwd )
+            console.log("logged in")
             setUser('')
             setPwd('')
-            //navigate('/Profile')
+            navigate('/Profile')
         } catch (err) {
             if (!err?.originalStatus) {
                 // isLoading: true until timeout occurs

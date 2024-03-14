@@ -6,6 +6,7 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport');
 const httpStatus = require('http-status');
+const cookieParser = require('cookie-parser');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
@@ -13,6 +14,7 @@ const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
+
 
 const app = express();
 
@@ -42,10 +44,17 @@ const corsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
 };
-app.use(cors(corsOptions));
-app.options('*', cors());
+app.use(
+  cors({ 
+    credentials: true,
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  })
+);
+//app.options('http://localhost:3000', cors()); // what is this for? 
 
 // jwt authentication
+app.use(cookieParser());
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
 
